@@ -1,6 +1,6 @@
-install:
+﻿install:
 	cd frontend && npm install
-	cd backend && mvn -q -DskipTests compile
+	./mvnw -f backend/pom.xml -q -DskipTests compile
 start:
 	docker compose up -d --build
 stop:
@@ -10,18 +10,17 @@ logs:
 frontend-start:
 	cd frontend && npm start
 backend-start:
-	cd backend && mvn spring-boot:run
+	./mvnw -f backend/pom.xml spring-boot:run
 test:
 	cd frontend && npm test -- --watch=false
-	cd backend && mvn test
+	./mvnw -f backend/pom.xml test
 build:
 	cd frontend && npm run build
-	cd backend && mvn clean package
+	./mvnw -f backend/pom.xml clean package
 lint:
 	cd frontend && npm run lint
 format:
 	cd frontend && npm run format
-	cd backend && mvn spotless:apply
 docker-build:
 	docker compose build
 docker-clean:

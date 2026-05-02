@@ -1,2 +1,55 @@
-# API
-Exemples curl register/login/refresh/logout/me/products à enrichir selon implémentation finale.
+﻿# API
+
+Base URL: `/api`
+
+## Authentification
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/refresh`
+- `POST /api/auth/logout`
+
+### Payload register/login
+
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+### Payload refresh/logout
+
+```json
+{
+  "refreshToken": "<jwt-refresh>"
+}
+```
+
+## Utilisateur connecté
+
+- `GET /api/me`
+- Header requis: `Authorization: Bearer <jwt-access>`
+
+Réponse exemple:
+
+```json
+{
+  "email": "user@example.com",
+  "role": "ROLE_USER"
+}
+```
+
+## Erreurs uniformisées
+
+Toutes les erreurs API retournent:
+
+```json
+{
+  "timestamp": "2026-05-02T15:00:00Z",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "message fonctionnel",
+  "path": "/api/auth/login"
+}
+```

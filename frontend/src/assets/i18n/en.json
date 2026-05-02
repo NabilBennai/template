@@ -1,1 +1,15 @@
-{"auth":{"login":"Login","register":"Register","email":"Email","password":"Password"},"common":{"welcome":"Welcome"}}
+{
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password"
+  },
+  "common": {
+    "welcome": "Welcome",
+    "privateArea": "Private area",
+    "privateDescription": "You are signed in and can access private features.",
+    "adminArea": "Admin area",
+    "adminDescription": "Access restricted to users with admin role."
+  }
+}
