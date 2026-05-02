@@ -1,15 +1,21 @@
-{
+﻿{
   "auth": {
     "login": "Connexion",
     "register": "Inscription",
     "email": "Email",
     "password": "Mot de passe"
   },
+  "nav": {
+    "brand": "Template Auth",
+    "dashboard": "Tableau de bord",
+    "admin": "Administration",
+    "logout": "Déconnexion"
+  },
   "common": {
     "welcome": "Bienvenue",
-    "privateArea": "Espace privé",
-    "privateDescription": "Vous êtes connecté et pouvez accéder aux fonctionnalités privées.",
-    "adminArea": "Espace administrateur",
+    "dashboardTitle": "Tableau de bord",
+    "dashboardDescription": "Vous êtes connecté et pouvez accéder à vos fonctionnalités.",
+    "adminTitle": "Administration",
     "adminDescription": "Accès réservé aux utilisateurs avec rôle administrateur."
   }
 }

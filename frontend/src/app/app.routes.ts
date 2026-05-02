@@ -4,29 +4,27 @@ import {LoginComponent} from './auth/login.component';
 import {RegisterComponent} from './auth/register.component';
 import {adminGuard} from './core/guards/admin.guard';
 import {authGuard} from './core/guards/auth.guard';
-import {AdminLayoutComponent} from './layout/admin-layout.component';
-import {PrivateLayoutComponent} from './layout/private-layout.component';
-import {PublicLayoutComponent} from './layout/public-layout.component';
+import {AppLayoutComponent} from './layout/app-layout.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: PublicLayoutComponent,
+    component: AppLayoutComponent,
     children: [
       {path: '', redirectTo: 'login', pathMatch: 'full'},
       {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent},
+      {
+        path: 'app',
+        canActivate: [authGuard],
+        loadComponent: () => import('./layout/private-layout.component').then((m) => m.PrivateLayoutComponent)
+      },
+      {
+        path: 'admin',
+        canActivate: [authGuard, adminGuard],
+        loadComponent: () => import('./layout/admin-layout.component').then((m) => m.AdminLayoutComponent)
+      }
     ]
-  },
-  {
-    path: 'app',
-    component: PrivateLayoutComponent,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'admin',
-    component: AdminLayoutComponent,
-    canActivate: [authGuard, adminGuard]
   },
   {path: '**', redirectTo: 'login'}
 ];

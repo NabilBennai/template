@@ -1,15 +1,14 @@
-import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
+﻿import {Component} from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-private-layout',
-  imports: [RouterLink, TranslatePipe],
+  standalone: true,
+  imports: [TranslatePipe],
   template: `
-    <section class="mx-auto max-w-3xl p-6">
-      <h2 class="text-xl font-semibold">{{ 'common.privateArea' | translate }}</h2>
-      <p>{{ 'common.privateDescription' | translate }}</p>
-      <a class="underline" routerLink="/admin">Espace admin</a>
+    <section class="rounded-xl bg-white p-5 shadow">
+      <h2 class="text-xl font-semibold">{{ 'common.dashboardTitle' | translate }}</h2>
+      <p>{{ 'common.dashboardDescription' | translate }}</p>
     </section>
   `
 })
