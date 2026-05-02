@@ -6,7 +6,6 @@ import com.example.template.security.JwtService;
 import com.example.template.user.Role;
 import com.example.template.user.User;
 import com.example.template.user.UserRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -45,18 +44,9 @@ class AuthServiceTest {
   @InjectMocks
   private AuthService authService;
 
-  @BeforeEach
-  void setUp() {
-    when(messageSource.getMessage("auth.email.exists", null, Locale.FRENCH)).thenReturn("email existe");
-    when(messageSource.getMessage("auth.invalid", null, Locale.FRENCH)).thenReturn("identifiants invalides");
-    when(messageSource.getMessage("auth.refresh.invalid", null, Locale.FRENCH)).thenReturn("refresh invalide");
-
-    when(jwtService.accessToken("user@example.com")).thenReturn("access");
-    when(jwtService.refreshToken("user@example.com")).thenReturn("refresh");
-  }
-
   @Test
   void register_shouldFailWhenEmailExists() {
+    when(messageSource.getMessage("auth.email.exists", null, Locale.FRENCH)).thenReturn("email existe");
     when(userRepository.existsByEmail("user@example.com")).thenReturn(true);
 
     assertThatThrownBy(() -> authService.register(new AuthDtos.RegisterRequest("user@example.com", "password123"), Locale.FRENCH))
@@ -66,6 +56,9 @@ class AuthServiceTest {
 
   @Test
   void login_shouldReturnTokensWhenCredentialsValid() {
+    when(jwtService.accessToken("user@example.com")).thenReturn("access");
+    when(jwtService.refreshToken("user@example.com")).thenReturn("refresh");
+
     User user = User.builder().email("user@example.com").password("hash").role(Role.USER).build();
     when(userRepository.findByEmail("user@example.com")).thenReturn(Optional.of(user));
     when(passwordEncoder.matches("password123", "hash")).thenReturn(true);
@@ -78,6 +71,7 @@ class AuthServiceTest {
 
   @Test
   void refresh_shouldFailWhenBlacklisted() {
+    when(messageSource.getMessage("auth.refresh.invalid", null, Locale.FRENCH)).thenReturn("refresh invalide");
     when(redis.hasKey("bl:bad-refresh")).thenReturn(true);
 
     assertThatThrownBy(() -> authService.refresh("bad-refresh", Locale.FRENCH))
