@@ -1,0 +1,10 @@
+name: docker-ci
+on: [push, pull_request]
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose config
+      - run: docker build -t template-frontend ./frontend
+      - run: docker build -t template-backend ./backend
