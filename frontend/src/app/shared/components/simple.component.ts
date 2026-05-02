@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+﻿import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-simple',
-  template: '<p>Composant partagé prêt.</p>'
+  templateUrl: './simple.component.html',
+  styleUrl: './simple.component.scss'
 })
 export class SimpleComponent {
 }

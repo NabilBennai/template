@@ -5,12 +5,8 @@ import {TranslatePipe} from '@ngx-translate/core';
   selector: 'app-private-layout',
   standalone: true,
   imports: [TranslatePipe],
-  template: `
-    <section class="rounded-xl bg-white p-5 shadow">
-      <h2 class="text-xl font-semibold">{{ 'common.dashboardTitle' | translate }}</h2>
-      <p>{{ 'common.dashboardDescription' | translate }}</p>
-    </section>
-  `
+  templateUrl: './private-layout.component.html',
+  styleUrl: './private-layout.component.scss'
 })
 export class PrivateLayoutComponent {
 }

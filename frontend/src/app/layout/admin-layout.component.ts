@@ -5,12 +5,8 @@ import {TranslatePipe} from '@ngx-translate/core';
   selector: 'app-admin-layout',
   standalone: true,
   imports: [TranslatePipe],
-  template: `
-    <section class="rounded-xl bg-white p-5 shadow">
-      <h2 class="text-xl font-semibold">{{ 'common.adminTitle' | translate }}</h2>
-      <p>{{ 'common.adminDescription' | translate }}</p>
-    </section>
-  `
+  templateUrl: './admin-layout.component.html',
+  styleUrl: './admin-layout.component.scss'
 })
 export class AdminLayoutComponent {
 }
