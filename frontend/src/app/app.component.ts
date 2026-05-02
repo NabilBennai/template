@@ -1,5 +1,5 @@
 ﻿import {Component} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {Event, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {NavbarComponent} from './shared/components/navbar.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.router.events.subscribe((event: any) => {
+    this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         setTimeout(() => window.HSStaticMethods.autoInit(), 100);
       }

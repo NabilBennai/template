@@ -1,5 +1,4 @@
-﻿import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
+﻿import {Component} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
 
@@ -9,7 +8,7 @@ import {I18nService} from '../services/i18n.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, TranslatePipe],
+  imports: [RouterLink, RouterLinkActive, TranslatePipe],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
