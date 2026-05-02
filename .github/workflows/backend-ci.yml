@@ -6,5 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: '25', cache: maven }
-      - run: cd backend && mvn clean verify
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+      - run: chmod +x mvnw
+      - run: ./mvnw -f backend/pom.xml clean verify
