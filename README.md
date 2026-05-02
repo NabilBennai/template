@@ -1,21 +1,22 @@
 ﻿# Template Full-Stack Auth-First (Angular + Spring Boot)
 
-Template **auth-first prêt à cloner** pour démarrer rapidement un projet Angular + Spring Boot avec sécurité, i18n et
-CI.
+Template **auth-first prêt à cloner** pour démarrer rapidement un projet Angular + Spring Boot avec sécurité, i18n et CI.
 
 ## Stack cible
 
-- Frontend: Angular 21, Tailwind CSS 4, Preline
-- Backend: Spring Boot 4, Java 25, Maven
-- Base de données: PostgreSQL + migrations Flyway
-- Cache/session sécurité: Redis
+- Frontend: Angular 21
+- Backend: Spring Boot 4, Java 25, Maven Wrapper
+- Base de données: MySQL 8 + migrations Flyway
+- Cache/session sécurité: Redis 7
+- Outils UI optionnels: Tailwind CSS / Preline (installation à la demande)
 
 ## Fonctionnalités incluses
 
-- Auth complète backend: `register`, `login`, `refresh`, `logout`
+- Auth backend complète: `register`, `login`, `refresh`, `logout`
 - Endpoint protégé: `GET /api/me`
-- JWT access/refresh avec stockage frontend
+- JWT access/refresh + blacklist des refresh tokens dans Redis
 - i18n frontend (`fr`/`en`) et backend (`messages*.properties`)
+- Navbar frontend auth-aware + switch de langue
 - CI GitHub Actions: `frontend-ci`, `backend-ci`, `docker-ci`, `security`
 
 ## Lancement local (Docker)
@@ -24,6 +25,14 @@ CI.
 cp .env.example .env
 docker compose up -d --build
 ```
+
+Services exposés par défaut:
+
+- MySQL: `localhost:3306`
+- Redis: `localhost:6379`
+- Adminer: `http://localhost:8081`
+- MinIO API: `http://localhost:9000`
+- MinIO Console: `http://localhost:9001`
 
 ## Développement local
 
@@ -47,15 +56,14 @@ npm start
 
 ## IntelliJ (important)
 
-- Ouvrir **le dossier racine** `template/` (pas uniquement `frontend/`)
-- Attendre l'import Maven depuis `pom.xml` racine
-- Si besoin: onglet Maven > Reload All Projects
+- Ouvrir le dossier racine `template/` (pas uniquement `frontend/`)
+- Recharger le projet Maven si nécessaire (`pom.xml` racine + `backend/pom.xml`)
 
 ## Structure
 
-- `frontend/`: application Angular modulaire (`core`, `shared`, `features`, `auth`, `layout`)
+- `frontend/`: app Angular (`core`, `shared`, `features`, `auth`, `layout`)
 - `backend/`: API Spring Boot (`config`, `security`, `auth`, `user`, `common`, `exception`)
-- `docs/`: documentation architecture, API, sécurité et déploiement
+- `docs/`: documentation architecture, API, sécurité, déploiement
 
 ## Endpoints auth
 

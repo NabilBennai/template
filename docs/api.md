@@ -9,7 +9,7 @@ Base URL: `/api`
 - `POST /api/auth/refresh`
 - `POST /api/auth/logout`
 
-### Payload register/login
+### Payload `register` / `login`
 
 ```json
 {
@@ -18,7 +18,7 @@ Base URL: `/api`
 }
 ```
 
-### Payload refresh/logout
+### Payload `refresh` / `logout`
 
 ```json
 {
@@ -42,7 +42,7 @@ Réponse exemple:
 
 ## Erreurs uniformisées
 
-Toutes les erreurs API retournent:
+Format retourné:
 
 ```json
 {
@@ -53,3 +53,11 @@ Toutes les erreurs API retournent:
   "path": "/api/auth/login"
 }
 ```
+
+## CORS
+
+Origines autorisées configurées via variable d'environnement:
+
+- `CORS_ALLOWED_ORIGINS=http://localhost:4200`
+
+Valeurs multiples possibles, séparées par des virgules.
