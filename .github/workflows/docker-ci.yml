@@ -1,5 +1,19 @@
 name: docker-ci
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - 'docker-compose.yml'
+      - '.env.example'
+      - '.github/workflows/docker-ci.yml'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - 'docker-compose.yml'
+      - '.env.example'
+      - '.github/workflows/docker-ci.yml'
 jobs:
   docker:
     runs-on: ubuntu-latest

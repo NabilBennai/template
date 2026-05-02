@@ -1,5 +1,19 @@
 name: backend-ci
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - 'mvnw'
+      - 'mvnw.cmd'
+      - '.mvn/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'mvnw'
+      - 'mvnw.cmd'
+      - '.mvn/**'
+      - '.github/workflows/backend-ci.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
